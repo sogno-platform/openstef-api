@@ -1,8 +1,10 @@
 ==========
-OpenSTEF API - Preliminary
+OpenSTEF API
 ==================================================
 This project exposes the functionality of the openstef package through an FASTApi based API.
 This repo is very much a Work in Progress, and currently released for Sogno
+
+## Example data files can be obtained in the [openstef-api-example-data](https://github.com/alliander-opensource/openstef-api-example-data) repo
 
 ## Installation
 
@@ -67,7 +69,6 @@ app
 |
 ├── app_settings.py                     (APP and API settings)
 └── main.py                             (Main entry point to initialize and start the app)
-<<<<<<< HEAD
 ```
 
 # License
