@@ -3,13 +3,13 @@
 from fastapi import FastAPI
 
 from app.core.settings import Settings
-from app.routers.forecast.v1.api_view import router as forecast_router
-from app.routers.hyperparameters.v1.api_view import router as hyperparameters_router
-from app.routers.optimize_hyperparameters_task.v1.api_view import (
+from app.routers.v1.forecast.api_view import router as forecast_router
+from app.routers.v1.hyperparameters.api_view import router as hyperparameters_router
+from app.routers.v1.optimize_hyperparameters_task.api_view import (
     router as optimize_hyperparameters_task_router,
 )
-from app.routers.trained_model.v1.api_view import router as trained_model_router
-from app.routers.trained_model_task.v1.api_view import router as train_model_task_router
+from app.routers.v1.trained_model.api_view import router as trained_model_router
+from app.routers.v1.trained_model_task.api_view import router as train_model_task_router
 
 app = FastAPI(
     title=Settings.app_name,

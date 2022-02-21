@@ -1,4 +1,4 @@
-from app.models.v1.shared_models import FeatureModel
+from app.schemas.v1.shared_models import FeatureModel
 
 # Test if we can initialize a model with nan values in the features
 
