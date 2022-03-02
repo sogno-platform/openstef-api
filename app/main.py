@@ -85,7 +85,7 @@ async def shutdown():
 @app.get("/")
 def redirect_to_docs():
     """Redirect users to the docs of the default API version (typically the latest)"""
-    redirect_url = "/api/v1/docs"  # replace with docs URL or use app.url_path_for()
+    redirect_url = "/api/v2/docs"  # replace with docs URL or use app.url_path_for()
     return RedirectResponse(url=redirect_url)
 
 
