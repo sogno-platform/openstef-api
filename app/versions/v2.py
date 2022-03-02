@@ -3,7 +3,7 @@
 from fastapi import FastAPI
 
 from app.core.settings import Settings
-from app.routers.v2.model import router as model_router
+from app.routers.v2.models.model_api import router as model_router
 from app.routers.v2.training import router as training_router
 from app.routers.v2.prediction import router as prediction_router
 

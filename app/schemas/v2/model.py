@@ -18,9 +18,8 @@ class PredModelBase(BaseModel):
     model_definition: Optional[Dict[str,Any]]
 
 class PredModel(PredModelBase):
-    model_id: UUID
+    model_id: int
     date_trained: Optional[datetime]
     date_hyperparameter_tuned: Optional[datetime]
     predicted_feature: Optional[str]
-    # XXX see if DataDefinition is a necessary/reasonable thing to have
     expected_data_format: Optional[InputDataFormat]
