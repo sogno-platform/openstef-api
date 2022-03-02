@@ -11,6 +11,6 @@ responses>=0.13.3,<1.0.0
 starlette-prometheus>=0.7.0,<1.0.0
 structlog==21.5.0
 uvicorn==0.17.4
-
+aioredis==2.0.1
 
 

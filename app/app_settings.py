@@ -64,17 +64,30 @@ class AppSettings(BaseSettings):
         description="The directory which will be used to store and retrieve trained model reports from",
     )
 
-    # MySQL settings
-    mysql_username: str = ""
-    mysql_host: str = ""
-    mysql_port: int = 3306
-    mysql_password: SecretStr = ""
-    mysql_database: str = ""
-    # InfluxDB settings (used to get predictors)
-    influxdb_username: str = ""
-    influxdb_password: SecretStr = ""
-    influxdb_host: str = ""
-    influxdb_port: int = 8086
+    # Redis settings
+    redis_host:str = "localhost"
+    redis_port:int = 6379
+    redis_username = "default"
+    redis_password:SecretStr = "testpw"
+
+    # AMQP settings
+    amqp_host:str = "localhost"
+    amqp_port:int = 5672
+    amqp_username:str = "guest"
+    amqp_password:SecretStr = "testpw"
+    amqp_exchange:str = ""
+
+    # # MySQL settings
+    # mysql_username: str = ""
+    # mysql_host: str = ""
+    # mysql_port: int = 3306
+    # mysql_password: SecretStr = ""
+    # mysql_database: str = ""
+    # # InfluxDB settings (used to get predictors)
+    # influxdb_username: str = ""
+    # influxdb_password: SecretStr = ""
+    # influxdb_host: str = ""
+    # influxdb_port: int = 8086
 
     # APM settings
     apm_secret_token: str = Field("", description="The APM secret token")
