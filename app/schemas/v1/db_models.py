@@ -2,7 +2,7 @@
 from datetime import datetime
 from sqlalchemy import Boolean, Column, Integer, String, DateTime
 
-from app.database import Base
+from app.common.database import Base
 
 
 class TrainModelTask(Base):
