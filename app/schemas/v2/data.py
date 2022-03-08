@@ -46,13 +46,13 @@ class OutDataDefinition(BaseModel):
 
 
 class InputDataFormat(BaseModel):
-    max_length: Optional[int] = Field(..., gt=0, description="Maxmium length of a single sample put into a model")
-    min_length: Optional[int] = Field(..., gt=0, description="Minimum length of a single sample put into a model")
+    max_length: Optional[int] = Field(..., ge=0, description="Maxmium length of a single sample put into a model")
+    min_length: Optional[int] = Field(..., ge=0, description="Minimum length of a single sample put into a model")
     resolution_minutes: Optional[int] = Field(60, gt=0,description="Dataresolution in minutes")
     feature_names: List[str] = Field(..., description="The features (previously) used to train the model",
         example=["windspeed", "radiation", "is_saturday", "T-7d"],)
 
 
 class InputData(BaseModel):
-    id: UUID
+    id: int
     format: InputDataFormat

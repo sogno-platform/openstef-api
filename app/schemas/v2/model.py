@@ -4,6 +4,7 @@ from uuid import UUID
 from datetime import datetime
 from app.core.base_model import BaseModel
 from app.schemas.v2.data import InputDataFormat
+from app.schemas.v2.job import Job
 
 
 class ModelType(str,Enum):
@@ -23,3 +24,7 @@ class PredModel(PredModelBase):
     date_hyperparameter_tuned: Optional[datetime]
     predicted_feature: Optional[str]
     expected_data_format: Optional[InputDataFormat]
+
+class PredModelCreationJob(Job):
+    resource: PredModelBase
+    result: Optional[PredModel]
