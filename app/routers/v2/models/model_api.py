@@ -1,10 +1,7 @@
-from venv import create
 from fastapi import APIRouter
 from typing import List, Optional
-from uuid import UUID, uuid4
-from app.schemas.v2.model import PredModel, PredModelBase
-from app.database import redis_model
-from .model_controller import *
+from app.schemas.v2.model import PredModel, PredModelBase, PredModelCreationJob
+from . import model_controller as mc
 
 router = APIRouter()
 
@@ -14,27 +11,26 @@ async def all_models():
     """
     Get a list with all available model results.
     """
-    ids = await get_all_model_ids()
-    print(ids)
-    return ids
+    return await mc.get_all_model_ids()
+
 
 
 @router.get("/{model_id}", response_model=PredModel)
-async def get_model(model_id: UUID):
-    return await get_model(model_id)
+async def get_model(model_id: int):
+    return await mc.get_model(model_id)
 
 
-@router.post("/", response_model=PredModel)
+@router.post("/", response_model=PredModelCreationJob)
 async def create_model(data: PredModelBase):
     """
     Request a new model.
     """
-    return await create_model(data)
+    return await mc.create_model(data)
 
 
 @router.delete("/{model_id}", response_model=PredModel)
-async def delete_model(model_id: UUID):
+async def delete_model(model_id: int):
     """
     Delete a model.
     """
-    return await delete_model(model_id)
+    return await mc.delete_model(model_id)

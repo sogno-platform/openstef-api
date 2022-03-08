@@ -4,6 +4,7 @@ from uuid import UUID, uuid4
 from app.schemas.v2.data import InputData
 # from app.schemas.v2.benchmark import Benchmark
 
+raise NotImplementedError("This endpoint has not been implemented")
 
 router = APIRouter(prefix="/benchmark", tags=["benchmark"])
 
