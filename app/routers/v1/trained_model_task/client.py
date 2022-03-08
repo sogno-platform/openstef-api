@@ -1,6 +1,6 @@
 import structlog
 
-from app import database
+from app.common import database
 from app.schemas.v1.db_models import TrainModelTask
 
 # TODO (FRANK): the tasks_table appears to not be used (anymore?)

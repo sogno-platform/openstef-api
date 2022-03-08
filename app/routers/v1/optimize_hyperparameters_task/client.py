@@ -1,6 +1,6 @@
 import structlog
 
-from app import database
+from app.common import database
 from app.schemas.v1.db_models import OptimizeHyperparametersTask
 
 optimize_hyperparameters_tasks_table = """

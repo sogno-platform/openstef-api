@@ -1,4 +1,4 @@
-from app.database import db_model_as_dict
+from app.common.database import db_model_as_dict
 from app.schemas.v1.db_models import TrainModelTask
 from app.routers.v1.trained_model_task.api_models import TrainModelTaskReponseModel
 from app.routers.v1.trained_model_task.repository import TrainModelTaskRepository

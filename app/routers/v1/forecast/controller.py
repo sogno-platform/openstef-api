@@ -8,7 +8,7 @@ import pandas as pd
 # from openstef.pipeline.create_basecase_forecast import create_basecase_forecast_pipeline
 # from openstef.pipeline.create_forecast import create_forecast_pipeline_core
 
-from app.exceptions import ModelNotFoundError
+from app.common.exceptions import ModelNotFoundError
 from app.schemas.v1.utils import (
     forecast_df_to_forecast_model,
     prediction_job_request_model_to_prediction_job_dict,

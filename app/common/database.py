@@ -30,21 +30,21 @@ def get_session():
 redis_meta = redis_from_url(
     url=f"redis://{Settings.redis_host}:{Settings.redis_port}",
     username=Settings.redis_username,
-    password=str(Settings.redis_password),
+    password=Settings.redis_password.get_secret_value(),
     db=0,
 )
 
 redis_job = redis_from_url(
     url=f"redis://{Settings.redis_host}:{Settings.redis_port}",
     username=Settings.redis_username,
-    password=str(Settings.redis_password),
+    password=Settings.redis_password.get_secret_value(),
     db=1,
 )
 
 redis_model = redis_from_url(
     url=f"redis://{Settings.redis_host}:{Settings.redis_port}",
     username=Settings.redis_username,
-    password=str(Settings.redis_password),
+    password=Settings.redis_password.get_secret_value(),
     db=2,
 )
 

@@ -3,7 +3,7 @@ import structlog
 from fastapi import APIRouter, status
 from fastapi.exceptions import HTTPException
 
-from app.exceptions import ModelNotFoundError
+from app.common.exceptions import ModelNotFoundError
 from app.schemas.v1.shared_models import ForecastType
 from app.routers.v1.forecast.api_models import (
     ForecastRequestModel,
