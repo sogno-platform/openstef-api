@@ -73,9 +73,9 @@ class AppSettings(BaseSettings):
     # AMQP settings
     amqp_host:str = "localhost"
     amqp_port:int = 5672
-    amqp_username:str = "guest"
+    amqp_username:str = "user"
     amqp_password:SecretStr = "testpw"
-    amqp_exchange:str = ""
+    amqp_exchange:str = "forecastingjobs"
 
     # # MySQL settings
     # mysql_username: str = ""
