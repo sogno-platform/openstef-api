@@ -1,22 +1,27 @@
-from typing import Optional, Dict, Any, Union
+from __future__ import annotations
+from ast import Bytes
+from typing import Optional, Dict, Any, List, Union
 from enum import Enum
-from uuid import UUID
 from datetime import datetime
+from pydantic import Field, validator  # , BaseModel
+from proloaf.base import PydConfigurable as BaseModel
+from .data import InputDataFormat
+from .job import Job
+from proloaf.modelhandler import ModelWrapper
 from app.core.base_model import BaseModel
-from app.schemas.v2.data import InputDataFormat
-from app.schemas.v2.job import Job
 
 
-class ModelType(str,Enum):
-    #TODO Placeholder
+class ModelType(str, Enum):
+    # TODO Placeholder
     model1 = "model1"
     model2 = "model2"
+
 
 class PredModelBase(BaseModel):
     name: Optional[str]
     model_type: ModelType
-    # XXX "just a dict" is not a comprehensible typdefinition 
-    model_definition: Optional[Dict[str,Any]]
+    model: Optional[ModelWrapper]
+
 
 class PredModel(PredModelBase):
     model_id: int
@@ -24,6 +29,7 @@ class PredModel(PredModelBase):
     date_hyperparameter_tuned: Optional[datetime]
     predicted_feature: Optional[str]
     expected_data_format: Optional[InputDataFormat]
+
 
 class PredModelCreationJob(Job):
     resource: PredModelBase

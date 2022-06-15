@@ -1,11 +1,9 @@
 from typing import Optional, Dict, Any, Union, List
 from enum import Enum
-from uuid import UUID
 from datetime import datetime
-
-from pydantic import Field, validator
-
+from pydantic import Field  # , BaseModel
 from app.core.base_model import BaseModel
+
 
 class TimeseriesData(BaseModel):
     """Input data model.
@@ -15,7 +13,7 @@ class TimeseriesData(BaseModel):
     DataFrame.
     """
 
-    index: List[datetime] = Field(
+    index: Union[List[int], List[datetime]] = Field(
         ...,
         description="Datetime index of load and features",
         # TODO better example
@@ -40,19 +38,33 @@ class TimeseriesData(BaseModel):
 
 class OutDataDefinition(BaseModel):
     length: int
-    resolution_minutes: Optional[int] = Field(60, gt=0,description="Dataresolution in minutes")
-    feature_names: List[str] = Field(..., description="The features (previously) used to train the model",
-        example=["windspeed", "radiation", "is_saturday", "T-7d"],)
+    resolution_minutes: Optional[int] = Field(
+        60, gt=0, description="Dataresolution in minutes"
+    )
+    feature_names: List[str] = Field(
+        ...,
+        description="The features (previously) used to train the model",
+        example=["windspeed", "radiation", "is_saturday", "T-7d"],
+    )
 
 
 class InputDataFormat(BaseModel):
-    max_length: Optional[int] = Field(..., ge=0, description="Maxmium length of a single sample put into a model")
-    min_length: Optional[int] = Field(..., ge=0, description="Minimum length of a single sample put into a model")
-    resolution_minutes: Optional[int] = Field(60, gt=0,description="Dataresolution in minutes")
-    feature_names: List[str] = Field(..., description="The features (previously) used to train the model",
-        example=["windspeed", "radiation", "is_saturday", "T-7d"],)
+    max_length: Optional[int] = Field(
+        None, ge=0, description="Maxmium length of a single sample put into a model"
+    )
+    min_length: Optional[int] = Field(
+        None, ge=0, description="Minimum length of a single sample put into a model"
+    )
+    resolution_minutes: Optional[int] = Field(
+        60, gt=0, description="Dataresolution in minutes"
+    )
+    feature_names: List[str] = Field(
+        ...,
+        description="The features (previously) used to train the model",
+        example=["windspeed", "radiation", "is_saturday", "T-7d"],
+    )
 
 
 class InputData(BaseModel):
     id: int
-    format: InputDataFormat
+    format: Optional[InputDataFormat]
