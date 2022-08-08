@@ -1,16 +1,27 @@
 import pickle
 
+import structlog
+
 from app.common.database import redis_model, redis_job, get_unique_id
 from app.schemas.v2.model import PredModelBase, PredModel, PredModelCreationJob
 from app.common.io import amqp_publisher
 
-
+logger = structlog.get_logger(__name__)
 async def get_all_model_ids():
     keys = await redis_model.keys(pattern = "model_*")
     return [key.decode("utf-8").split("_")[-1] for key in keys]
 
 async def get_model(id:int):
-    model = pickle.loads(await redis_model.get(f"model_{id}"))
+    print("in get model")
+    byte_model = await redis_model.get(f"model_{id}")
+    try:
+        model = pickle.loads(byte_model)
+    except TypeError as exc:
+        if byte_model is None:
+            logger.info(f"Model with ID {id} was requested but does not exist in Database.")
+            model = None
+        else:
+            raise exc
     return model
 
 
