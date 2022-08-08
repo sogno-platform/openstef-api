@@ -11,7 +11,9 @@ responses>=0.13.3,<1.0.0
 starlette-prometheus>=0.7.0,<1.0.0
 structlog==21.5.0
 uvicorn==0.17.4
-aioredis==2.0.1
+redis~=4.2
 # TODO make sognojq into pypi package
-git+https://github.com/sogno-platform/sogno-job-queue@main#egg=sogno-job-queue
+git+https://github.com/sogno-platform/sogno-job-queue@main
+git+https://git.rwth-aachen.de/acs/public/automation/plf/proloaf/@prep-for-sogno-service-new-history
+git+https://github.com/sogno-platform/proloaf-worker@initial-testing
 
