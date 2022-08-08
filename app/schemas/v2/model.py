@@ -7,7 +7,7 @@ from pydantic import Field, validator  # , BaseModel
 from proloaf.base import PydConfigurable as BaseModel
 from .data import InputDataFormat
 from .job import Job
-from proloaf.modelhandler import ModelWrapper
+from proloaf.modelhandler import ModelWrapper as Model
 from app.core.base_model import BaseModel
 
 
@@ -20,7 +20,7 @@ class ModelType(str, Enum):
 class PredModelBase(BaseModel):
     name: Optional[str]
     model_type: ModelType
-    model: Optional[ModelWrapper]
+    model: Optional[Model]
 
 
 class PredModel(PredModelBase):
