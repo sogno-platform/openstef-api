@@ -20,7 +20,7 @@ class AppSettings(BaseSettings):
 
     # APP settings
     app_name: str = Field(
-        "icarus-openstf-api",
+        "sogno-forecasting-api",
         description="App name, typically the same as the deployment name",
     )
     app_description: str = Field(
@@ -28,11 +28,11 @@ class AppSettings(BaseSettings):
         description="What does the app do?",
     )
     app_maintainer: str = Field(
-        "Korte termijn prognoses",
+        "",
         description="The maintainer of this app that should be contacted in case of questions and problems",
     )
     app_maintainer_email: EmailStr = Field(
-        "korte.termijn.prognoses@alliander.com",
+        "",
         description="The maintainer's email adress",
     )
     app_version: str = Field(
@@ -41,9 +41,9 @@ class AppSettings(BaseSettings):
     )
 
     # API Settings
-    api_host: str = Field("127.0.0.1", description="Host identifier for listening.")
+    api_host: str = Field("0.0.0.0", description="Host identifier for listening.")
     api_port: int = Field(
-        8000, description="Port to which the web server must bind.", env="PORT"
+        8000, description="Port to which the web server must bind."
     )
 
     api_enable_core_endpoints: bool = Field(
@@ -55,19 +55,19 @@ class AppSettings(BaseSettings):
     )
 
     # Trained models repository
-    trained_models_folder: Path = Field(
-        Path("trained-models"),
-        description="The directory which will be used to store and retrieve trained models from",
-    )
-    trained_model_reports_folder: Path = Field(
-        Path("trained-models"),
-        description="The directory which will be used to store and retrieve trained model reports from",
-    )
+    # trained_models_folder: Path = Field(
+    #     Path("trained-models"),
+    #     description="The directory which will be used to store and retrieve trained models from",
+    # )
+    # trained_model_reports_folder: Path = Field(
+    #     Path("trained-models"),
+    #     description="The directory which will be used to store and retrieve trained model reports from",
+    # )
 
     # Redis settings
     redis_host:str = "localhost"
     redis_port:int = 6379
-    redis_username = "default"
+    redis_username:str = "default"
     redis_password:SecretStr = "testpw"
 
     # AMQP settings
@@ -134,6 +134,18 @@ class DeployedAppSettings(AppSettings):
         description="The directory which will be used to store and retrieve trained model reports from",
     )
 
+        # Redis settings
+    redis_host:str = "redis-master"
+    redis_port:int = 6379
+    redis_username = "default"
+    redis_password:SecretStr = "testpw"
+
+    # AMQP settings
+    amqp_host:str = "172.17.0.1"
+    amqp_port:int = 5672
+    amqp_username:str = "user"
+    amqp_password:SecretStr = "testpw"
+    amqp_exchange:str = "forecastingjobs"
 
 class LocalAppSettings(AppSettings):
     """Define default values if the app runs locally."""
