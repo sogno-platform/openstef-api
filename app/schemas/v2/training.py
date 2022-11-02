@@ -1,6 +1,6 @@
 from __future__ import annotations
 from typing import Optional, Dict, Any, Union
-from proloaf.modelhandler import TrainingRun
+from .proloaf_api_models import TrainingRun
 from app.core.base_model import BaseModel
 
 

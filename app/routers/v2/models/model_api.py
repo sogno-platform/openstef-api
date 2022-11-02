@@ -1,6 +1,13 @@
 from fastapi import APIRouter
 from typing import List, Optional
-from app.schemas.v2.model import PredModel, PredModelBase, PredModelCreationJob
+
+# import structlog
+from app.schemas.v2.model import (
+    PredModel,
+    PredModelBase,
+    PredModelCreationJob,
+    ModelType,
+)
 from . import model_controller as mc
 
 router = APIRouter()

@@ -1,4 +1,4 @@
 """Customize default BaseModel"""
-from proloaf.base import PydConfigurable as BaseModel
+from pydantic import BaseModel
 
 BaseModel.Config.extra = "ignore"

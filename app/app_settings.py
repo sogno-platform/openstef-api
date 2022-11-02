@@ -32,7 +32,7 @@ class AppSettings(BaseSettings):
         description="The maintainer of this app that should be contacted in case of questions and problems",
     )
     app_maintainer_email: EmailStr = Field(
-        "",
+        "test@placeholder.com",
         description="The maintainer's email adress",
     )
     app_version: str = Field(
@@ -65,14 +65,14 @@ class AppSettings(BaseSettings):
     # )
 
     # Redis settings
-    redis_host:str = "localhost"
-    redis_port:int = 6379
+    redis_host:str = "172.17.0.1"
+    redis_port:int = 30994
     redis_username:str = "default"
     redis_password:SecretStr = "testpw"
 
     # AMQP settings
-    amqp_host:str = "localhost"
-    amqp_port:int = 5672
+    amqp_host:str = "172.17.0.1"
+    amqp_port:int = 30020
     amqp_username:str = "user"
     amqp_password:SecretStr = "testpw"
     amqp_exchange:str = "forecastingjobs"
@@ -134,15 +134,15 @@ class DeployedAppSettings(AppSettings):
         description="The directory which will be used to store and retrieve trained model reports from",
     )
 
-        # Redis settings
-    redis_host:str = "redis-master"
-    redis_port:int = 6379
+    # Redis settings
+    redis_host:str = "172.17.0.1"
+    redis_port:int = 30010
     redis_username = "default"
     redis_password:SecretStr = "testpw"
 
     # AMQP settings
     amqp_host:str = "172.17.0.1"
-    amqp_port:int = 5672
+    amqp_port:int = 30994
     amqp_username:str = "user"
     amqp_password:SecretStr = "testpw"
     amqp_exchange:str = "forecastingjobs"
