@@ -1,4 +1,4 @@
-FROM haifischbecken/my-test-repo:proloaf-base
+FROM python:3
 COPY ./setup.py ./setup.py
 COPY ./requirements.txt ./
 COPY ./app ./app
